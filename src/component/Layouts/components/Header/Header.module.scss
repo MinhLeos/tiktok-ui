@@ -96,3 +96,7 @@ input:not(:placeholder-shown) ~ .search-btn {
    transform: translateY(-50%);
    color: rgba(22, 24, 35, 0.5);
 }
+
+.custom-button {
+   color: rgb(57, 57, 128);
+}

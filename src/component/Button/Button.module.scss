@@ -1,0 +1,82 @@
+.wrapper {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: 700;
+   font-size: 1.6rem;
+   min-width: 100px;
+   padding: 9px 16px;
+   border-radius: 4px;
+   cursor: pointer;
+   background-color: #fff;
+   border: 1px solid transparent;
+   user-select: none;
+
+   + .wrapper {
+      margin-left: 8px;
+   }
+
+   &.disabled {
+      //   cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.2;
+   }
+}
+
+// Button type
+.text {
+   &:hover {
+      text-decoration: underline;
+   }
+}
+
+.rounded {
+   border-radius: 9999px;
+   border-color: #aaa;
+   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+
+   &:hover {
+      background-color: rgba(22, 24, 35, 0.03);
+      border-color: rgba(22, 24, 35, 0.2);
+   }
+}
+
+.primary {
+   background-color: var(--primary);
+   color: #fff;
+   border: 1px solid transparent;
+
+   &:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #f41e48;
+      border: 1px solid transparent;
+   }
+}
+
+.outline {
+   color: var(--primary);
+   border-color: currentColor;
+
+   &:hover {
+      background-color: rgba(254, 44, 85, 0.06);
+      border-color: currentColor;
+   }
+}
+
+// Button type
+.small {
+   min-width: 88px;
+   padding: 4px 16px;
+}
+
+.large {
+   min-width: 188px;
+   padding: 14px 16px;
+}
+
+.left-icon {
+   margin-right: 8px;
+}
+
+.right-icon {
+   margin-left: 8px;
+}
