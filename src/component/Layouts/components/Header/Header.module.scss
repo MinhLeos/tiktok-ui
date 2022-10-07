@@ -100,3 +100,11 @@ input:not(:placeholder-shown) ~ .search-btn {
 .custom-button {
    color: rgb(57, 57, 128);
 }
+
+.more-btn {
+   background-color: transparent;
+   font-size: 2rem;
+   margin-left: 24px;
+   cursor: pointer;
+   padding: 4px 10px;
+}

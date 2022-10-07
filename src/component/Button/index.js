@@ -15,7 +15,7 @@ function Button(props) {
       small = false,
       large = false,
       disabled = false,
-      classNameCustom,
+      className,
       leftIcon,
       rightIcon,
       to,
@@ -46,7 +46,7 @@ function Button(props) {
       _props.href = href;
       Comp = 'a';
    }
-   // [classNameCustom]: classNameCustom  >>> lay value cua classNameCustom lam key va value cua Object
+   // [className]: className  >>> lay value cua className lam key va value cua Object
    const classes = cx('wrapper', {
       primary,
       outline,
@@ -55,10 +55,10 @@ function Button(props) {
       text,
       disabled,
       rounded,
-      [classNameCustom]: classNameCustom,
+      [className]: className,
    });
    return (
-      <Comp className={classes}>
+      <Comp className={classes} {..._props}>
          {leftIcon && <span className={cx('left-icon')}>{leftIcon}</span>}
          <span>{children}</span>
          {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}
