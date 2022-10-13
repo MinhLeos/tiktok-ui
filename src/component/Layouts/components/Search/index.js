@@ -3,9 +3,12 @@ import HeadlessTippy from '@tippyjs/react/headless'; // different import path!
 import classNames from 'classnames/bind';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as request from '@/utils/httprequest';
 
 import AccountItem from '@/component/AccountItem';
 import { Wrapper as PopperWrapper } from '@/component/Popper';
+import { useDebounce } from '@/hooks';
+import * as searchService from '@/apiService/searchService';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -17,25 +20,65 @@ function Search() {
 
    const inputRef = useRef();
 
+   const debouncedSearch = useDebounce(searchValue, 500);
+
    useEffect(() => {
-      if (!searchValue.trim()) {
+      if (!debouncedSearch.trim()) {
          setSearchResults([]);
          return;
       }
-      setLoading(true);
+      // setLoading(true);
       //encodeURIComponent >> ma hoa du lieu gui di de khong trung voi cac ki tu nhu ?, &, = cua parameter se gay ra bug
       //https://jsonplaceholder.typicode.com/users?q=&type=more
-      fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-         .then((res) => res.json())
-         .then((data) => {
-            console.log('data', data.data);
-            setSearchResults(data.data);
-            setLoading(false);
-         })
-         .catch(() => {
-            setLoading(false);
-         });
-   }, [searchValue]);
+      // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncedSearch)}&type=less`)
+      //    .then((res) => res.json())
+      //    .then((data) => {
+      //       // console.log('data', data.data);
+      // setSearchResults(data.data);
+      // setLoading(false);
+      //    })
+      //    .catch(() => {
+      //       setLoading(false);
+      //    });
+
+      // axios
+      //    .get(`https://tiktok.fullstack.edu.vn/api/users/search`, {
+      // request
+      //    .get(`/users/search`, {
+      //       params: {
+      //          q: debouncedSearch,
+      //          type: 'less',
+      //       },
+      //    })
+      //    .then((res) => {
+      //       // console.log('res', res);
+      // setSearchResults(res.data);
+      // setLoading(false);
+      //    })
+      //    .catch((err) => {
+      //       setLoading(false);
+      //    });
+      const callApi = async () => {
+         setLoading(true);
+         // try {
+         //    const res = await request.get(`/users/search`, {
+         //       params: {
+         //          q: debouncedSearch,
+         //          type: 'less',
+         //       },
+         //    });
+         //    setSearchResults(res.data);
+         //    setLoading(false);
+         // } catch (error) {
+         //    setLoading(false);
+         // }
+
+         const result = await searchService.search(debouncedSearch);
+         setSearchResults(result);
+         setLoading(false);
+      };
+      callApi();
+   }, [debouncedSearch]);
 
    const handleChangeInput = (e) => {
       e.preventDefault();
@@ -66,7 +109,7 @@ function Search() {
                <PopperWrapper>
                   <h4 className={cx('search-title')}>Accounts</h4>
                   {searchResults.map((result) => {
-                     console.log('result', result);
+                     // console.log('result', result);
                      return <AccountItem key={result.id} data={result} />;
                   })}
                </PopperWrapper>

@@ -11,7 +11,7 @@ import Image from '../Image';
 const cx = classNames.bind(styles);
 
 function AccountItem({ data }) {
-   console.log('user: ', data);
+   // console.log('user: ', data);
    return (
       <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
          <Image className={cx('avatar')} src={data.avatar} alt="icon-avatar" />
