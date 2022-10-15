@@ -3,12 +3,12 @@ import HeadlessTippy from '@tippyjs/react/headless'; // different import path!
 import classNames from 'classnames/bind';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as request from '@/utils/httprequest';
+import * as request from '@/utils/httpRequest';
 
 import AccountItem from '@/component/AccountItem';
 import { Wrapper as PopperWrapper } from '@/component/Popper';
 import { useDebounce } from '@/hooks';
-import * as searchService from '@/apiService/searchService';
+import * as searchService from '@/services/searchService';
 import styles from './Search.module.scss';
 import { SearchIcon } from '@/component/Icons';
 
