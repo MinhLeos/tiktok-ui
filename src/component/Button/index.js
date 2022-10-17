@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import styles from './Button.module.scss';
 
@@ -65,5 +66,28 @@ function Button(props) {
       </Comp>
    );
 }
+
+Button.propTypes = {
+   // Anything that can be rendered: numbers, strings, elements or an array
+   // (or fragment) containing these types.
+   // see https://reactjs.org/docs/rendering-elements.html for more info
+   // ko render duoc nhu function
+   // .isRequired >>> validate bat buoc phai truyen props, neu ko co isRequired ma ko truyen thi se la undefined >>> ko validate
+
+   primary: PropTypes.bool,
+   outline: PropTypes.bool,
+   rounded: PropTypes.bool,
+   text: PropTypes.bool,
+   small: PropTypes.bool,
+   large: PropTypes.bool,
+   disabled: PropTypes.bool,
+   className: PropTypes.string,
+   leftIcon: PropTypes.node,
+   rightIcon: PropTypes.node,
+   to: PropTypes.string,
+   href: PropTypes.string,
+   onClick: PropTypes.func,
+   children: PropTypes.node.isRequired,
+};
 
 export default Button;
