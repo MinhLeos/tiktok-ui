@@ -55,8 +55,8 @@ input,
    border: none;
    outline: none;
 }
-
-a[href] {
+//dung a[href] có đọ ưu tiên cao hơn dùng a
+a {
    color: var(--text-color);
    text-decoration: none;
 }
