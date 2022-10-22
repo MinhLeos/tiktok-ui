@@ -9,8 +9,9 @@ import AccountItem from '@/component/AccountItem';
 import { Wrapper as PopperWrapper } from '@/component/Popper';
 import { useDebounce } from '@/hooks';
 import * as searchService from '@/services/searchService';
-import styles from './Search.module.scss';
 import { SearchIcon } from '@/component/Icons';
+
+import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
 function Search() {
